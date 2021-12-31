@@ -7,4 +7,9 @@
   tasks:
   - name: install packages
     package:
-      name: htop
+      name:
+        - htop
+        - atom
+        - neofetch
+        - darktable
+        - tmux
