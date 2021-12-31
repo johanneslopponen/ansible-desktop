@@ -13,3 +13,23 @@
         - neofetch
         - darktable
         - tmux
+
+  - name: add ansible user
+    user:
+      name: runner
+      system: yes
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_velociraptor
+      dest: /etc/sudoers.d/velociraptor
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: velociraptor
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/johanneslopponen/ansible-desktop.git
