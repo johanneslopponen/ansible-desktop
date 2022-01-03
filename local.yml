@@ -36,6 +36,6 @@
       job: ansible-pull -o -U https://github.com/johanneslopponen/ansible-desktop.git
 
   - name: update system
-    pacman:
+    package:
       update_cache: yes
       upgrade: yes
