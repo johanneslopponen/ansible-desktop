@@ -13,6 +13,7 @@
         - neofetch
         - darktable
         - tmux
+        - rapid-photo-downloader
 
   - name: add ansible user
     user:
@@ -33,3 +34,8 @@
       user: velociraptor
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/johanneslopponen/ansible-desktop.git
+
+  - name: update system
+    package:
+      update-cache: yes
+      upgrade: yes
